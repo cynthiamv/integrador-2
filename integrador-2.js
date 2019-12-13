@@ -1,3 +1,11 @@
+// Observaciones generales
+// Excelente trabajo, codigo muy prolijo, buen uso de variables, 
+// excelente trabajo con las ultimas estructuras aprendidas. 
+// Mis observaciones a lo largo del codigo son principalmente detalles, 
+// porque lo cierto es que todo el trabajo es excelente. 
+// Estoy muy contenta por el gran trabajo hecho y el esfuerzo extra de haberlo hecho sola. 
+// Felicitaciones! 
+
 let usuarios = [
     [0, "Carla", "1545628984", "carla@gmail.com"],
     [1, "Pedro", "1545251245", "pedro@gmail.com"],
@@ -7,7 +15,18 @@ let usuarios = [
 
 let operacion = "";
 let menuPrincipal = "SI";
+
+// Cuando declaramos una variable usando otra variable, como usuarios.length, 
+// si despues usuarios.length cambia, la variable idUsuarioAAgregar *no* cambia. 
+// La consecuencia en tu codigo es que cada usuario que agrego, 
+// se guarda con el mismo id (lo que impacta por ejemplo al querer borrar uno)
 let idUsuarioAAgregar = usuarios.length;
+
+// nombre, telefono e email son strings
+// no afecta en nada declararlos inicialmente como arrays vacios, 
+// pero lo habitual es mantener el tipo que dato que van a tener
+// entonces seria mejor hacer asi
+// let nombreAAgregar = "";
 let nombreAAgregar = [];
 let telefonoAAgregar = [];
 let emailAAgregar = [];
@@ -26,6 +45,7 @@ while(menuPrincipal.toUpperCase() == "SI") {
     
 
     // AGREGAR USUARIO
+    // bien lo de toUpperCase() 
     if (operacion.toUpperCase() == "AGREGAR") {
         let repetirOperacion = "SI";
 
@@ -66,7 +86,12 @@ while(menuPrincipal.toUpperCase() == "SI") {
             ☎️ Telefono o
             📧 E-mail?`);
             let datoBuscado = prompt(`Por favor ingrese el dato a buscar`);
+               // para que sirva aunque el usuario lo ponga en minusculas, podriamos agregar:
+//             datoBuscado = datoBuscado.toLowerCase()
 
+            // esto siempre va a dar "true" o id, por la manera en que javascript entiende los ||
+            // deberia ser asi
+            //  if (tipoDeDato == "id" || tipoDeDato == "nombre" || tipoDeDato == "telefono" || tipoDeDato == "email") {
             if (tipoDeDato == "id" || "nombre" || "telefono" || "email") {
                 for (let i = 0; i < usuarios.length; i++) {
                     for (let j = 0; j < usuarios[i].length; j++) {
